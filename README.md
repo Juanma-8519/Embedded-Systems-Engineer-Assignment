@@ -55,8 +55,8 @@ In the main, all other components are instantiated. It also contains three state
 
 * A: read data and convert it to ASCII
 * B: send byte to UART
-* C: data_valid = 1;
-* D: data_valid = 0
+* C: _data_valid_ = 1;
+* D: _data_valid_ = 0
 * E: wait until end of transmissión and check end of chars to send
 
 ### RX_FSM
@@ -65,8 +65,8 @@ This little state machine is only in charge of accumulating characters received 
 
 <img src="media/UART_RX_ENTER_FSM.png">
 
-*ACUM: Store data (max 32) until a CR+NL is received.
-*END: State to send the Data Valid pulse.
+* ACUM: Store data (max 32) until a CR+NL is received.
+* END: State to send the Data Valid pulse.
 
 ### MAIN_RX_FSM
 
@@ -76,8 +76,8 @@ Transition diagram between states when a correct order from the uart is received
 
 * SAMPLING RATE: read new adquisition frequency, and configure ADC. The three substates are to disable readings when changing the frequency.
 * DIGITIZER; read digitizer factor. The substate is to check if we have read a correct positive value.
-* START: rise ADC_Start
-* STOP: ADC_Start =0;
+* START: rise _ADC_Start_
+* STOP: _ADC_Start_ =0;
 * AVERAGING SAMPLES: read the number of samples to do the average.The next substate is to check if exceed the maximum size of the buffer or if its negative
 * COEFFS: Stay in the same state during the transmission of the 25 FIR coefficients.
 
