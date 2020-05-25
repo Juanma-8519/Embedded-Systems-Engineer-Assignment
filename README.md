@@ -53,11 +53,11 @@ In the main, all other components are instantiated. It also contains three state
 ### TX_FSM
 <img src="media/UART_TX_FSM.png">
 
-*A: read data and convert it to ASCII
-*B: send byte to UART
-*C: data_valid = 1;
-*D: data_valid = 0
-*E: wait until end of transmissión and check end of chars to send
+* A: read data and convert it to ASCII
+* B: send byte to UART
+* C: data_valid = 1;
+* D: data_valid = 0
+* E: wait until end of transmissión and check end of chars to send
 
 ### RX_FSM
 
@@ -74,12 +74,12 @@ Transition diagram between states when a correct order from the uart is received
 
 <img src="media/UART_RX_DECOD_FSM.png">
 
-*SAMPLING RATE: read new adquisition frequency, and configure ADC. The three substates are to disable readings when changing the frequency.
-*DIGITIZER; read digitizer factor. The substate is to check if we have read a correct positive value.
-*START: rise ADC_Start
-*STOP: ADC_Start =0;
-*AVERAGING SAMPLES: read the number of samples to do the average.The next substate is to check if exceed the maximum size of the buffer or if its negative
-*COEFFS: Stay in the same state during the transmission of the 25 FIR coefficients.
+* SAMPLING RATE: read new adquisition frequency, and configure ADC. The three substates are to disable readings when changing the frequency.
+* DIGITIZER; read digitizer factor. The substate is to check if we have read a correct positive value.
+* START: rise ADC_Start
+* STOP: ADC_Start =0;
+* AVERAGING SAMPLES: read the number of samples to do the average.The next substate is to check if exceed the maximum size of the buffer or if its negative
+* COEFFS: Stay in the same state during the transmission of the 25 FIR coefficients.
 
 ## [UART_TX](Innerspec_project.srcs/sources_1/new/UART_TX.vhd)
 115200 bauds, 8 bits plus start and stop and new line CR+NL.
