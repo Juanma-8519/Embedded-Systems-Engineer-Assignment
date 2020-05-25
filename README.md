@@ -36,5 +36,9 @@ Since all communication is via serial, I have had to develop a function package 
 
 <img src="media/serial.png">
 
+## [acumulator.vhd](Innerspec_project.srcs/sources_1/new/acumulator.vhd)
+
+### ACUMULATOR_FSM
+<img src="Average%20FSM.png">
 
 
