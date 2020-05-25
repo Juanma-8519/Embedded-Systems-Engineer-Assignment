@@ -5,5 +5,5 @@ A Basys3 development board was provided by Innerspec on Wednesday 20/05 at morni
 Regarding my prototyping tasks, I was working at home without the availability of a waveform generator. So I simulated the analog input with a potentiometer acting as a resistive divider.
 In the JXADC PMOD connector, I used the 3.3V signal and its ground (pins 6-12 and 5-11 respectively). I connected a fixed resistor R1 at the top of the 1.1Mohm value divider and a 500kohm value potentiometer at the bottom. In this way, using the full linear range of the potentiometer, the one-volt limitation of the analog input channels is not exceeded.
 
-![PMOD Conection] (/media/PMOD%20Connection.png)
+![PMOD Conection] (/media/PMOD Connection.png)
 
