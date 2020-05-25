@@ -42,7 +42,7 @@ Since all communication is via serial, I have had to develop a function [package
 
 <img src="media/Average%20FSM.png">
 
-To simulate this component, a test_bench has been generated. The input _analog_data_ is a constant, which is what we acquired from the ADC in my situation. In the bench test it can be seen that when changing the buffer size to run the average, the accumulator response time changes. In 100us, _av_buffer_size_ = 16 and in 400us _av_buffer_size_ = 4;
+To simulate this component, a [test_bench](Innerspec_project.srcs/sim_1/new/acumulator_tb.vhd) has been generated. The input _analog_data_ is a constant, which is what we acquired from the ADC in my situation. In the bench test it can be seen that when changing the buffer size to run the average, the accumulator response time changes. In 100us, _av_buffer_size_ = 16 and in 400us _av_buffer_size_ = 4;
 
 <img src="media/acumulator_tb.png">
 <img src="media/acumulator_serial.png">
