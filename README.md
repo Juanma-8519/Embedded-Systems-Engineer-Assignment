@@ -32,7 +32,7 @@ For the interpretation of the commands from the UI, I have created a state machi
 * C↵: Coefficients
 
 In the “Averaging samples”, “sampling rate”, “digitizer” and “coeffs” states, the machine states waits for the user to enter the corresponding data following by an enter.
-Since all communication is via serial, I have had to develop a function [package](Innerspec_project.srcs/sources_1/new/integer_to_ascii.vhd) to work with ASCII characters. Functions to convert to ASCII and to convert from ASCII.
+Since all communication is via serial, I have had to develop a function [package](Innerspec_project.srcs/sources_1/new/integer_to_ascii.vhd) to work with ASCII characters. [Functions](Innerspec_project.srcs/sim_1/new/string_tb.vhd) to convert to ASCII and to convert from ASCII.
 
 <img src="media/serial.png">
 
