@@ -108,9 +108,7 @@ As an analog input I have configured the XADC thanks to its IP wizard to acquire
 
 ## VIDEO CHANGING FREQ
 
-<video>
-  <source src="media/VID-20200524-WA0001.mp4">
-</video>
+<iframe width="745" height="410" src="https://www.youtube.com/embed/40wTQ-KW04U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## **Future Tasks**
 
