@@ -102,7 +102,7 @@ With the help of this test bench, the value of the filter digitizer has been cal
 
 ## [ADC](Innerspec_project.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd)
 
-<img src="media/XADC_wiz">
+<img src="media/XADC_wiz.png">
 
 As an analog input I have configured the XADC thanks to its IP wizard to acquire, in a single channel, unipolar mode, and continuous signals from the VAUXP6 and VAUXN6 channels (pins J3 and K3 of the FPGA respectively). The XADC has a DRP interface and all alarms have been disabled.
 
