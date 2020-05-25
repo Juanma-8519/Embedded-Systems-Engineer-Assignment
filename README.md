@@ -6,3 +6,6 @@ Regarding my prototyping tasks, I was working at home without the availability o
 In the JXADC PMOD connector, I used the 3.3V signal and its ground (pins 6-12 and 5-11 respectively). I connected a fixed resistor R1 at the top of the 1.1Mohm value divider and a 500kohm value potentiometer at the bottom. In this way, using the full linear range of the potentiometer, the one-volt limitation of the analog input channels is not exceeded.
 
 ![Image description]https://github.com/Juanma-8519/Embedded-Systems-Engineer-Assignment/blob/master/media/PMOD%20Connection.png
+
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
