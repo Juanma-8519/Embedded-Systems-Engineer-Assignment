@@ -93,8 +93,8 @@ Module taken from Nandland
 Sends the outputs data from the filter.
 
 ## [FIR FILTER](Innerspec_project.srcs/sources_1/new/FIR.vhd)
-The FIR filter model has been taken from the vhdl.es website. It is a model for a low pass filter but with the python script of the repository another set of band pass coefficients can be generated. That script is already working and my idea was to do it in the high level UI and then send the coefficients through the serial port. But as I don’t have UI, I included a state in the RX_FSM to send the 25 coefficients through serial.
-First calculating the coefficients with the python script and then generating an input file, that same filter was run in a functional test_bench to see its behavior. The attached screenshot shows a wave with three frequencies at the input and as the output only contain the center frequency.
+The FIR filter model has been taken from the [vhdl.es website](https://vhdl.es/filtro-fir-vhdl/). It is a model for a low pass filter but with the [python script of the repository](master/Python/bandpass coeffs.py) another set of band pass coefficients can be generated. That script is already working and my idea was to do it in the high level UI and then send the coefficients through the serial port. But as I don’t have UI, I included a state in the RX_FSM to send the 25 coefficients through serial.
+First calculating the coefficients with the [python script](master/Python/bandpass coeffs.py) and then generating an [input file](master/Python/input samples.txt), with [other script](filtro fir fixed point.py), the same filter was run in a functional test_bench to see its behavior. The attached screenshot shows a wave with three frequencies at the input and as the output only contain the center frequency.
 
 <img src="media/FIR_tb.png">
 
