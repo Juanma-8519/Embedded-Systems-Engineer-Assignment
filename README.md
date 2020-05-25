@@ -36,9 +36,82 @@ Since all communication is via serial, I have had to develop a function package 
 
 <img src="media/serial.png">
 
-## [acumulator.vhd](Innerspec_project.srcs/sources_1/new/acumulator.vhd)
+## [ACUMULATOR](Innerspec_project.srcs/sources_1/new/acumulator.vhd)
 
 ### ACUMULATOR_FSM
-<img src="Average%20FSM.png">
 
+<img src="media/Average%20FSM.png">
+
+To simulate this component, a test_bench has been generated. The input _analog_data_ is a constant, which is what we acquired from the ADC in my situation. In the bench test it can be seen that when changing the buffer size to run the average, the accumulator response time changes. In 100us, _av_buffer_size_ = 16 and in 400us _av_buffer_size_ = 4;
+
+<img src="media/acumulator_tb.png">
+<img src="media/acumulator_serial.png">
+
+## [MAIN](Innerspec_project.srcs/sources_1/new/main.vhd)
+In the main, all other components are instantiated. It also contains three state machines to transmit through the serial port and to receive and decode the orders.
+
+### TX_FSM
+<img src="media/UART_TX_FSM.png">
+
+*A: read data and convert it to ASCII
+*B: send byte to UART
+*C: data_valid = 1;
+*D: data_valid = 0
+*E: wait until end of transmissión and check end of chars to send
+
+### RX_FSM
+
+This little state machine is only in charge of accumulating characters received by the serial port and waiting for the intro to arrive. When so, it activates a flag to call the main state machine of the reception.
+
+<img src="media/UART_RX_ENTER_FSM.png">
+
+*ACUM: Store data (max 32) until a CR+NL is received.
+*END: State to send the Data Valid pulse.
+
+### MAIN_RX_FSM
+
+Transition diagram between states when a correct order from the uart is received
+
+<img src="media/UART_RX_DECOD_FSM.png">
+
+*SAMPLING RATE: read new adquisition frequency, and configure ADC. The three substates are to disable readings when changing the frequency.
+*DIGITIZER; read digitizer factor. The substate is to check if we have read a correct positive value.
+*START: rise ADC_Start
+*STOP: ADC_Start =0;
+*AVERAGING SAMPLES: read the number of samples to do the average.The next substate is to check if exceed the maximum size of the buffer or if its negative
+*COEFFS: Stay in the same state during the transmission of the 25 FIR coefficients.
+
+## [UART_TX](Innerspec_project.srcs/sources_1/new/UART_TX.vhd)
+115200 bauds, 8 bits plus start and stop and new line CR+NL.
+Module taken from Nandland.
+Waits for the CR+NL to interpretate a correct order.
+Max length buffer, 32 chars
+
+## [UART_RX](Innerspec_project.srcs/sources_1/new/UART_RX.vhd)
+115200 bauds, 8 bits plus start and stop and new line CR+NL
+Module taken from Nandland
+Sends the outputs data from the filter.
+
+## [FIR FILTER](Innerspec_project.srcs/sources_1/new/FIR.vhd)
+The FIR filter model has been taken from the vhdl.es website. It is a model for a low pass filter but with the python script of the repository another set of band pass coefficients can be generated. That script is already working and my idea was to do it in the high level UI and then send the coefficients through the serial port. But as I don’t have UI, I included a state in the RX_FSM to send the 25 coefficients through serial.
+First calculating the coefficients with the python script and then generating an input file, that same filter was run in a functional test_bench to see its behavior. The attached screenshot shows a wave with three frequencies at the input and as the output only contain the center frequency.
+
+<img src="media/FIR_tb.png">
+
+With the help of this test bench, the value of the filter digitizer has been calculated to adjust the output for that input to its maximum dynamic range. The start value of that scale factor is 12000. You can see how for this value of digitizer factor, the amplitude of the signal is around 2000 what is the maximum (2048) for a 12 bits signed signal.
+
+## [ADC](Innerspec_project.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd)
+
+<img src="media/XADC_wiz">
+
+As an analog input I have configured the XADC thanks to its IP wizard to acquire, in a single channel, unipolar mode, and continuous signals from the VAUXP6 and VAUXN6 channels (pins J3 and K3 of the FPGA respectively). The XADC has a DRP interface and all alarms have been disabled.
+
+## **Future Tasks**
+
+This is the work that I have been able to do during this week. As tasks that have been incomplete or need more time I would highlight the following:
+* Restructure code so that it can be interpreted easier.
+* More debugging in some aspects, for example the reception with the uart in hardware.
+* Try to find other programming methodologies so that the implementation in the FPGA will be more efficient. Regarding to this, I must say that in the current design the running phase synth_design has lasted up to an hour and a half.
+* Work in the interface to have visual information and make the use more friendly than in the command line of the COM.
+* Try the whole system with a waveform generator.
 
