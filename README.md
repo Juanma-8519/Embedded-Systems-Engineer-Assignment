@@ -7,3 +7,15 @@ In the JXADC PMOD connector, I used the 3.3V signal and its ground (pins 6-12 an
 
 <img src="media/PMOD%20Connection.png">
 
+Below is a photograph of the working situation. I use the multimeter to check if the values we are measuring though the serial match with the real input.
+
+<img src="media/basys3.png.png">
+
+Next, I will describe how the different stages of the FPGA hardware design are structured. The layout consists of 6 .vhd files and this is how they are interconnected.
+
+* [main.vhd](Innerspec_project.srcs/sources_1/new/main.vhd)
+* uart_tx.vhd
+* uart_rx.vhd
+* xadc_wiz_o.vhd
+* acumulator.vhd
+* fir_filter.vhd
