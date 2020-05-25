@@ -98,7 +98,7 @@ First calculating the coefficients with the [python script](master/Python/bandpa
 
 <img src="media/FIR_tb.png">
 
-With the help of this test bench, the value of the filter digitizer has been calculated to adjust the output for that input to its maximum dynamic range. The start value of that scale factor is 12000. You can see how for this value of digitizer factor, the amplitude of the signal is around 2000 what is the maximum (2048) for a 12 bits signed signal.
+With the help of this [test bench](Innerspec_project.srcs/sim_1/new/FIR_bandpass_25coeffs_tb.vhd), the value of the filter digitizer has been calculated to adjust the output for that input to its maximum dynamic range. The start value of that scale factor is 12000. You can see how for this value of digitizer factor, the amplitude of the signal is around 2000 what is the maximum (2048) for a 12 bits signed signal.
 
 ## [ADC](Innerspec_project.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd)
 
