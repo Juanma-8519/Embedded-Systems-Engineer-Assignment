@@ -19,3 +19,22 @@ Next, I will describe how the different stages of the FPGA hardware design are s
 * [xadc_wiz_o.vhd](Innerspec_project.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd)
 * [acumulator.vhd](Innerspec_project.srcs/sources_1/new/acumulator.vhd)
 * [fir_filter.vhd](Innerspec_project.srcs/sources_1/new/FIR.vhd)
+
+<img src="media/block%20diagram.png">
+
+For the interpretation of the commands from the UI, I have created a state machine in the serial reception. The PC will deliver the following commands:
+
+* B↵: Starts
+* Q↵: Stops
+* A↵: Averaging Samples
+* S↵: Sampling Rate
+* D↵: Digitalize
+* C↵: Coefficients
+
+In the “Averaging samples”, “sampling rate”, “digitizer” and “coeffs” states, the machine states waits for the user to enter the corresponding data following by an enter.
+Since all communication is via serial, I have had to develop a function package to work with ASCII characters. Functions to convert to ASCII and to convert from ASCII.
+
+<img src="media/serial.png">
+
+
+
