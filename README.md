@@ -115,7 +115,7 @@ As an analog input I have configured the XADC thanks to its IP wizard to acquire
 
 This is the work that I have been able to do during this week. As tasks that have been incomplete or need more time I would highlight the following:
 * Restructure code so that it can be interpreted easier.
-* More debugging in some aspects, for example the reception with the uart in hardware.
+* More debugging in some aspects, for example the reception with the uart in hardware. Try to implement an acknowlegde command.
 * Try to find other programming methodologies so that the implementation in the FPGA will be more efficient. Regarding to this, I must say that in the current design the running phase synth_design has lasted up to an hour and a half.
 * Work in the interface to have visual information and make the use more friendly than in the command line of the COM.
 * Try the whole system with a waveform generator.
